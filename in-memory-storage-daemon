@@ -1,0 +1,2 @@
+#!/bin/bash
+/home/petr/Workspace/in-memory-storage/in_memory_storage_daemon.py /tmp/in-memory-storage
