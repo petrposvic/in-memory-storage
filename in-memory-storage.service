@@ -1,0 +1,8 @@
+[Unit]
+Description=In Memory Storage Daemon
+
+[Service]
+ExecStart=/home/petr/Workspace/in-memory-storage/service.py
+
+[Install]
+WantedBy=default.target
