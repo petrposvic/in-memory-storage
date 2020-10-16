@@ -2,24 +2,27 @@
 
 ## Instalation
 ```
-ln -s /home/petr/Workspace/in-memory-storage/in-memory-storage-daemon /home/petr/bin/
+cp in-memory-storage.service ~/.config/systemd/user/
+# systemctl --user status in-memory-storage.service
+# systemctl --user start in-memory-storage.service
+# journalctl --user -u in-memory-storage.service -f
 ```
 
 ## Usage
 ```
 # Unknown key returns [err]
-echo "test" > /tmp/in-memory-storage && cat /tmp/in-memory-storage
+./client.py test
 [err]
 
 # Put returns [ok]
-echo "test=abc" > /tmp/in-memory-storage && cat /tmp/in-memory-storage
+./client.py test=abc
 [ok]
 
 # Get returns value
-echo "test" > /tmp/in-memory-storage && cat /tmp/in-memory-storage
+./client.py test
 abc
 
 # [all] returns all memory
-echo "[all]" > /tmp/in-memory-storage && cat /tmp/in-memory-storage
+./client.py [all]
 {"test": "abc"}
 ```
