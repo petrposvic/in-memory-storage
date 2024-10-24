@@ -40,7 +40,8 @@ class Service(dbus.service.Object):
                 log.debug(f"get {words[0]}={self.memory[words[0]]}")
                 return self.memory[words[0]]
             except KeyError as e:
-                log.exception(e)
+                # log.exception(e)
+                log.debug(e)
                 return "[err]"
 
         log.debug(f"put {words[0]}={words[1]}")
@@ -52,7 +53,8 @@ if __name__ == '__main__':
     handler = logging.StreamHandler(sys.stdout)
     handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
     log = logging.getLogger()
-    log.setLevel(logging.DEBUG)
+    # log.setLevel(logging.DEBUG)
+    log.setLevel(logging.ERROR)
     log.addHandler(handler)
 
     Service().run()
